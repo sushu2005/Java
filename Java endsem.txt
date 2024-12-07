@@ -1,0 +1,107 @@
+@RequestMapping("/greet")
+public String greet(@RequestParam String username, Model model) {
+    model.addAttribute("username", username);
+    return "greet";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Welcome, ${username}!</h1>
+</body>
+</html>
+@RequestMapping("/about")
+public String about() {
+    return "about";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>About Us</h1>
+    <p>Welcome to the About page!</p>
+</body>
+</html>
+@RequestMapping("/demo1")
+public String demo1(@RequestParam int age, @RequestParam String country, Model model) {
+    model.addAttribute("age", age);
+    model.addAttribute("country", country);
+    return "demo1";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>User Details</h1>
+    <p>Age: ${age}</p>
+    <p>Country: ${country}</p>
+</body>
+</html>
+@RequestMapping("/demo2/{num1}/{num2}")
+public String demo2(@PathVariable int num1, @PathVariable int num2, Model model) {
+    model.addAttribute("subtraction", num1 - num2);
+    model.addAttribute("division", num1 / num2);
+    return "demo2";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Arithmetic Operations</h1>
+    <p>Subtraction: ${subtraction}</p>
+    <p>Division: ${division}</p>
+</body>
+</html>
+@RequestMapping("/productform")
+public String productForm() {
+    return "productform";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Product Form</h1>
+    <form action="/submitProduct" method="post">
+        <label>Product ID:</label><input type="text" name="productId" /><br>
+        <label>Product Name:</label><input type="text" name="productName" /><br>
+        <label>Price:</label><input type="text" name="price" /><br>
+        <label>Description:</label><textarea name="description"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+@RequestMapping("/multiplyNumbers")
+public String multiplyNumbers(@RequestParam int num1, @RequestParam int num2, Model model) {
+    model.addAttribute("result", num1 * num2);
+    return "multiplyNumbers";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Multiplication Result</h1>
+    <p>The result is: ${result}</p>
+</body>
+</html>
+@RequestMapping("/reverse")
+public String reverseStrings(@RequestParam String str1, @RequestParam String str2, Model model) {
+    model.addAttribute("reversedStr1", new StringBuilder(str1).reverse().toString());
+    model.addAttribute("reversedStr2", new StringBuilder(str2).reverse().toString());
+    return "reverse";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Reversed Strings</h1>
+    <p>Reversed String 1: ${reversedStr1}</p>
+    <p>Reversed String 2: ${reversedStr2}</p>
+</body>
+</html>
+@RequestMapping("/calculate")
+public String calculate(@RequestParam int num1, @RequestParam int num2, Model model) {
+    model.addAttribute("addition", num1 + num2);
+    model.addAttribute("subtraction", num1 - num2);
+    return "calculate";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Calculation Results</h1>
+    <p>Addition: ${addition}</p>
+    <p>Subtraction: ${subtraction}</p>
+</body>
+</html>
